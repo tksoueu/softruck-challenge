@@ -140,3 +140,16 @@ vite.config.ts.timestamp-*
 
 # Notes
 anotações.md
+
+# Vite build output
+dist/
+
+# Vite cache
+.vite/
+
+# IDE folders
+.vscode/
+
+# OS junk
+.DS_Store
+Thumbs.db
