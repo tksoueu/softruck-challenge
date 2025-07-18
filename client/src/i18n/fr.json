@@ -1,0 +1,14 @@
+{
+  "courseSelector": {
+    "label": "Sélectionner l'itinéraire:"
+  },
+  "vehicleInfo": {
+    "vehicle": "Véhicule:",
+    "totalCourses": "Total des itinéraires:",
+    "maxSpeed": "Vitesse maximale:"
+  },
+  "map": {
+    "noData": "Aucune donnée GPS disponible.",
+    "loading": "Chargement..."
+  }
+}
