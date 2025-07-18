@@ -3,6 +3,8 @@ import { getCourses } from '../../services/coursesService';
 import { getSummary } from '../../services/summaryService';
 import { getVehicle } from '../../services/vehicleService';
 import { MapView } from './MapView';
+import { CourseSelector } from '../../components/CourseSelector/CourseSelector';
+import { VehicleInfoCard } from '../../components/VehicleInfoCard/VehicleInfoCard';
 
 function interpolatePoints(
   points: { lat: number; lng: number }[],
@@ -24,7 +26,6 @@ function interpolatePoints(
   }
 
   interpolated.push(points[points.length - 1]);
-
   return interpolated;
 }
 
@@ -32,6 +33,7 @@ export function MapPage() {
   const [courses, setCourses] = useState([]);
   const [summary, setSummary] = useState(null);
   const [vehicle, setVehicle] = useState(null);
+  const [selectedCourseIndex, setSelectedCourseIndex] = useState(0);
 
   useEffect(() => {
     async function fetchData() {
@@ -53,7 +55,9 @@ export function MapPage() {
     return <p>Loading...</p>;
   }
 
-  const rawGpsPoints = courses[0]?.gps?.map((point: any) => ({
+  const selectedCourse = courses[selectedCourseIndex];
+
+  const rawGpsPoints = selectedCourse?.gps?.map((point: any) => ({
     lat: point.latitude,
     lng: point.longitude,
     direction: point.direction,
@@ -63,15 +67,24 @@ export function MapPage() {
 
   return (
     <div className="page-wrapper">
+      <div className="info-bar">
+        <CourseSelector
+          courses={courses}
+          selectedIndex={selectedCourseIndex}
+          onChange={setSelectedCourseIndex}
+        />
+        <VehicleInfoCard
+          plate={vehicle.plate}
+          totalCourses={summary.num_courses}
+          speedMax={selectedCourse.speed_max}
+        />
+      </div>
+
       {gpsPoints?.length ? (
-        <MapView gpsPoints={gpsPoints} speed={summary.speed_max} />
+        <MapView gpsPoints={gpsPoints} speed={selectedCourse.speed_max} />
       ) : (
         <p>Nenhum dado GPS disponível.</p>
       )}
-
-      <p>Veículo: {vehicle.plate}</p>
-      <p>Total de percursos: {summary.num_courses}</p>
-      <p>Velocidade máxima: {summary.speed_max.toFixed(2)} km/h</p>
     </div>
   );
 }
