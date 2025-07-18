@@ -20,26 +20,6 @@ Este projeto é parte do desafio proposto pela Softruck, com o objetivo de exibi
 
 ---
 
-## **Estrutura de Pastas**
-
-softruck-challenge/
-│
-├── client/ # Frontend (React + Vite)
-│ ├── public/ # Imagens e assets estáticos
-│ └── src/
-│ ├── components/ # Componentes reutilizáveis (CourseSelector, VehicleInfoCard, etc.)
-│ ├── features/ # Funcionalidade principal (mapa + animação do carro)
-│ ├── services/ # Consumo da API (json-server)
-│ ├── utils/ # Funções auxiliares (ex: cálculo de ângulo do carro)
-│ └── i18n/ # Configuração da internacionalização
-│
-├── server/ # API fake (json-server)
-│ └── db.json # Dados de veículo, trajetos e resumo
-│
-└── [README.md](http://readme.md/)
-
----
-
 ## **Tecnologias Utilizadas**
 
 * **React + Vite** : rápido setup para SPA.
