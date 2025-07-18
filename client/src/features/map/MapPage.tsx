@@ -83,7 +83,11 @@ export function MapPage() {
       </div>
 
       {gpsPoints?.length ? (
-        <MapView gpsPoints={gpsPoints} speed={selectedCourse.speed_max} />
+        <MapView 
+          key={selectedCourseIndex} 
+          gpsPoints={gpsPoints} 
+          speed={selectedCourse.speed_max} 
+        />
       ) : (
         <p>{t('map.noData')}</p>
       )}
