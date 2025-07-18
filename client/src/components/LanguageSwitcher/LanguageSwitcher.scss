@@ -1,3 +1,5 @@
+@use '../../styles/variables' as v;
+
 .language-switcher {
   position: absolute;
   top: 1rem;
@@ -6,7 +8,7 @@
 
   .lang-btn {
     background: white;
-    border: 1px solid var(--border-color);
+    border: 1px solid v.$border-color;
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -14,7 +16,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: var(--text-color);
+    color: v.$text-color;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: background 0.2s, color 0.2s;
 
@@ -25,7 +27,7 @@
     }
 
     &:hover {
-      background: var(--primary-color);
+      background: v.$primary-color;
       color: white;
     }
   }
@@ -33,7 +35,7 @@
   .lang-dropdown {
     margin-top: 0.5rem;
     background: white;
-    border: 1px solid var(--border-color);
+    border: 1px solid v.$border-color;
     border-radius: 6px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -49,18 +51,18 @@
       cursor: pointer;
       text-align: left;
       font-size: 0.9rem;
-      color: var(--text-color);
+      color: v.$text-color;
       transition: background 0.2s;
 
       &:hover {
-        background: var(--primary-color);
+        background: v.$primary-color;
         color: #fff;
       }
 
       &.active {
         background: rgba(0, 123, 255, 0.15);
         font-weight: bold;
-        color: var(--primary-color);
+        color: v.$primary-color;
       }
     }
   }
