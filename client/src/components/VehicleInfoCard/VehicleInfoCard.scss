@@ -1,0 +1,17 @@
+.vehicle-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  font-size: 0.95rem;
+  min-width: 240px;
+
+  p {
+    margin: 0.4rem 0;
+    color: #333;
+
+    strong {
+      color: #007bff;
+    }
+  }
+}
