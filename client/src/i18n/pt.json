@@ -1,3 +1,14 @@
 {
-  "title": "Frontend de Carro 3D"
+  "courseSelector": {
+    "label": "Selecionar percurso:"
+  },
+  "vehicleInfo": {
+    "vehicle": "Veículo:",
+    "totalCourses": "Total de percursos:",
+    "maxSpeed": "Velocidade máxima:"
+  },
+  "map": {
+    "noData": "Nenhum dado GPS disponível.",
+    "loading": "Carregando..."
+  }
 }

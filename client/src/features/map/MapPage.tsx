@@ -5,6 +5,7 @@ import { getVehicle } from '../../services/vehicleService';
 import { MapView } from './MapView';
 import { CourseSelector } from '../../components/CourseSelector/CourseSelector';
 import { VehicleInfoCard } from '../../components/VehicleInfoCard/VehicleInfoCard';
+import { useTranslation } from 'react-i18next';
 
 function interpolatePoints(
   points: { lat: number; lng: number }[],
@@ -30,6 +31,7 @@ function interpolatePoints(
 }
 
 export function MapPage() {
+  const { t } = useTranslation();
   const [courses, setCourses] = useState([]);
   const [summary, setSummary] = useState(null);
   const [vehicle, setVehicle] = useState(null);
@@ -52,7 +54,7 @@ export function MapPage() {
   }, []);
 
   if (!courses.length || !summary || !vehicle) {
-    return <p>Loading...</p>;
+    return <p>{t('map.loading')}</p>;
   }
 
   const selectedCourse = courses[selectedCourseIndex];
@@ -83,7 +85,7 @@ export function MapPage() {
       {gpsPoints?.length ? (
         <MapView gpsPoints={gpsPoints} speed={selectedCourse.speed_max} />
       ) : (
-        <p>Nenhum dado GPS disponível.</p>
+        <p>{t('map.noData')}</p>
       )}
     </div>
   );

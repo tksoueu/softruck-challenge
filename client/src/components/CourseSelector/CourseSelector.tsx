@@ -1,4 +1,5 @@
 import './CourseSelector.scss';
+import { useTranslation } from 'react-i18next';
 
 type Course = {
   start_at: string;
@@ -12,9 +13,11 @@ type Props = {
 };
 
 export function CourseSelector({ courses, selectedIndex, onChange }: Props) {
+  const { t } = useTranslation();
+
   return (
     <div className="course-selector">
-      <label htmlFor="course-select">Selecionar percurso:</label>
+      <label htmlFor="course-select">{t('courseSelector.label')}</label>
       <select
         id="course-select"
         value={selectedIndex}

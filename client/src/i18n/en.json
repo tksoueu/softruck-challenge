@@ -1,3 +1,14 @@
 {
-  "title": "3D Car Frontend"
+  "courseSelector": {
+    "label": "Select route:"
+  },
+  "vehicleInfo": {
+    "vehicle": "Vehicle:",
+    "totalCourses": "Total routes:",
+    "maxSpeed": "Maximum speed:"
+  },
+  "map": {
+    "noData": "No GPS data available.",
+    "loading": "Loading..."
+  }
 }

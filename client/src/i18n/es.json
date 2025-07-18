@@ -1,0 +1,14 @@
+{
+  "courseSelector": {
+    "label": "Seleccionar recorrido:"
+  },
+  "vehicleInfo": {
+    "vehicle": "Vehículo:",
+    "totalCourses": "Total de recorridos:",
+    "maxSpeed": "Velocidad máxima:"
+  },
+  "map": {
+    "noData": "No hay datos GPS disponibles.",
+    "loading": "Cargando..."
+  }
+}
