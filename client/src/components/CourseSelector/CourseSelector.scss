@@ -1,3 +1,5 @@
+@use '../../styles/variables' as v;
+
 .course-selector {
   display: flex;
   flex-direction: column;
@@ -8,15 +10,15 @@
   label {
     font-weight: 600;
     margin-bottom: 0.5rem;
-    color: var(--text-color);
+    color: v.$text-color;
   }
 
   select {
     padding: 0.5rem 0.75rem;
     border-radius: 6px;
-    border: 1px solid var(--border-color);
+    border: 1px solid v.$border-color;
     background-color: #fff;
-    color: var(--text-color);
+    color: v.$text-color;
     font-size: 0.95rem;
     font-family: inherit;
     cursor: pointer;
@@ -24,7 +26,7 @@
 
     &:focus {
       outline: none;
-      border-color: var(--primary-color);
+      border-color: v.$primary-color;
       box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
     }
   }
