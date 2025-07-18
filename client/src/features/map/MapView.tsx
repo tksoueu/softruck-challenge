@@ -1,11 +1,12 @@
 import { MapContainer, TileLayer, Marker, Polyline } from 'react-leaflet';
-import { LatLngExpression, icon } from 'leaflet';
+import { LatLngExpression } from 'leaflet';
+import { CarAnimation } from './CarAnimation';
 
 type Props = {
   gpsPoints: { lat: number; lng: number }[];
 };
 
-export function MapView({ gpsPoints }: Props) {
+export function MapView({ gpsPoints, speed }: Props) {
   if (!gpsPoints.length) return null;
 
   const startPosition: LatLngExpression = [gpsPoints[0].lat, gpsPoints[0].lng];
@@ -23,7 +24,7 @@ export function MapView({ gpsPoints }: Props) {
 
       <Polyline positions={gpsPoints.map(p => [p.lat, p.lng])} color="blue" />
 
-      <Marker position={startPosition} icon={icon({ iconUrl: 'marker-icon.png', iconSize: [25, 41], iconAnchor: [12, 41] })} />
+      <CarAnimation gpsPoints={gpsPoints} speed={speed}/>
     </MapContainer>
   );
 }

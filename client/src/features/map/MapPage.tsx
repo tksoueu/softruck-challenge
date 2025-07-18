@@ -4,6 +4,30 @@ import { getSummary } from '../../services/summaryService';
 import { getVehicle } from '../../services/vehicleService';
 import { MapView } from './MapView';
 
+function interpolatePoints(
+  points: { lat: number; lng: number }[],
+  stepsPerSegment = 10
+): { lat: number; lng: number }[] {
+  const interpolated: { lat: number; lng: number }[] = [];
+
+  for (let i = 0; i < points.length - 1; i++) {
+    const p1 = points[i];
+    const p2 = points[i + 1];
+
+    for (let step = 0; step < stepsPerSegment; step++) {
+      const t = step / stepsPerSegment;
+      interpolated.push({
+        lat: p1.lat + (p2.lat - p1.lat) * t,
+        lng: p1.lng + (p2.lng - p1.lng) * t,
+      });
+    }
+  }
+
+  interpolated.push(points[points.length - 1]);
+
+  return interpolated;
+}
+
 export function MapPage() {
   const [courses, setCourses] = useState([]);
   const [summary, setSummary] = useState(null);
@@ -29,15 +53,18 @@ export function MapPage() {
     return <p>Loading...</p>;
   }
 
-  const gpsPoints = courses[0]?.gps?.map((point: any) => ({
+  const rawGpsPoints = courses[0]?.gps?.map((point: any) => ({
     lat: point.latitude,
     lng: point.longitude,
+    direction: point.direction,
   }));
+
+  const gpsPoints = interpolatePoints(rawGpsPoints, 10);
 
   return (
     <div className="page-wrapper">
       {gpsPoints?.length ? (
-        <MapView gpsPoints={gpsPoints} />
+        <MapView gpsPoints={gpsPoints} speed={summary.speed_max} />
       ) : (
         <p>Nenhum dado GPS disponível.</p>
       )}
